@@ -23,9 +23,11 @@ public class Bird : MonoBehaviour
     // In OnEnable, set up this timer. 
     // If you need help, this code will be VERY SIMLIAR to previous timers you've
     //      coded! :)
+    
     private void OnEnable()
     {
-        
+        _popUpTimeRemaining = _popUpTime;
+        _doPopUpAnimation = true;
     }
     // STEP 2 -----------------------------------------------------------------
 
