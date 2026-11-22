@@ -26,8 +26,9 @@ public class Bird : MonoBehaviour
     
     private void OnEnable()
     {
-        _popUpTimeRemaining = _popUpTime;
         _doPopUpAnimation = true;
+        _popUpTimeRemaining = _popUpTime;
+        
     }
     // STEP 2 -----------------------------------------------------------------
 
@@ -39,7 +40,15 @@ public class Bird : MonoBehaviour
 
 
         // STEP 3 -------------------------------------------------------------
-
+        if (_doPopUpAnimation)
+        {
+            transform.Translate(0, _popUpSpeed * Time.deltaTime,0);
+            _popUpTimeRemaining -= Time.deltaTime;
+            if (_popUpTimeRemaining <= 0.0f)
+            {
+                _doPopUpAnimation = false;
+            }
+        }
 
 
         // STEP 6 -------------------------------------------------------------
@@ -49,7 +58,10 @@ public class Bird : MonoBehaviour
         //      with the Transform.LookAt() method:
         //      https://docs.unity3d.com/6000.2/Documentation/ScriptReference/Transform.LookAt.html
         
-
+       if (_player._isHoldingSeed)
+        {
+            transform.LookAt(_player.transform);
+        }
 
         // STEP 6 -------------------------------------------------------------
     }
