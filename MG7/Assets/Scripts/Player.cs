@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -92,7 +93,7 @@ public class Player : MonoBehaviour
         // STEP 7 -------------------------------------------------------------
         // Set the animation parameters to play the throwing animation.
         
-
+         _animator.SetTrigger("throw");
 
         // STEP 7 -------------------------------------------------------------
     }
@@ -121,7 +122,8 @@ public class Player : MonoBehaviour
         // Set the animation parameters to play the walking animation.
         // You might need the mouseY, mouseX, vertical, and horizontal variables
         //      that are above this step :)
-
+        bool isWalking = Mathf.Abs(vertical)>0.1f || Math.Abs(horizontal) > 0.1f;
+        _animator.SetBool("Walking", isWalking);
 
         // STEP 8 -------------------------------------------------------------
     }
